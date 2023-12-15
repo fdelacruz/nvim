@@ -4,6 +4,17 @@ require("lspconfig.ui.windows").default_options.border = "rounded"
 return {
   {
     "neovim/nvim-lspconfig",
-    opts = {},
+    opts = {
+      inlay_hints = { enabled = true },
+      servers = {
+        lua_ls = {
+          settings = {
+            Lua = {
+              hint = { enable = true },
+            },
+          },
+        },
+      },
+    },
   },
 }
