@@ -10,5 +10,12 @@ return {
         skip = true,
       },
     })
+    return vim.tbl_deep_extend("force", opts, {
+      lsp = {
+        progress = {
+          enabled = false,
+        },
+      },
+    })
   end,
 }
