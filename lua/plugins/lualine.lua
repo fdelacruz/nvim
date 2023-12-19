@@ -1,4 +1,9 @@
 local Util = require("lazyvim.util")
+
+local hide_in_width = function()
+  return vim.o.columns > 80
+end
+
 local lsp = {
   function()
     local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
@@ -31,6 +36,7 @@ local lsp = {
     return language_servers
   end,
   color = { gui = "bold" },
+  cond = hide_in_width,
 }
 
 local function env_cleanup(venv)
