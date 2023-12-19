@@ -101,7 +101,7 @@ return {
         },
       },
       lualine_y = {
-        { "location", padding = { left = 0, right = 1 } },
+        "location",
       },
       lualine_z = {
         "progress",
