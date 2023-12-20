@@ -3,6 +3,6 @@
 -- Add any additional keymaps here
 
 local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
 
-keymap("n", "-", ":lua require'lir.float'.toggle()<CR>", opts)
+keymap("n", "-", ":lua require'lir.float'.toggle()<CR>", { noremap = true, silent = true, desc = "Open lir" })
+keymap("n", ";", ":Dashboard<CR>", { noremap = true, silent = true, desc = "Open Dashboard" })
