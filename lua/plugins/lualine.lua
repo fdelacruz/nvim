@@ -1,6 +1,5 @@
 local Util = require("lazyvim.util")
 
-
 local function env_cleanup(venv)
   if string.find(venv, "/") then
     local final_venv = venv
@@ -25,8 +24,6 @@ local python_env = {
   color = { fg = "green" },
 }
 
-local icons = require("lazyvim.config").icons
-
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
@@ -38,15 +35,7 @@ return {
     sections = {
       lualine_c = {
         Util.lualine.root_dir(),
-        {
-          "diagnostics",
-          symbols = {
-            error = icons.diagnostics.Error,
-            warn = icons.diagnostics.Warn,
-            info = icons.diagnostics.Info,
-            hint = icons.diagnostics.Hint,
-          },
-        },
+        "diagnostics",
         { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
         { Util.lualine.pretty_path() },
         python_env,
