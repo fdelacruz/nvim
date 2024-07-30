@@ -11,10 +11,7 @@ local lsp = {
       return ""
     end
 
-    local formatters = require("conform").list_formatters()
-
     local buf_client_names = {}
-    local buf_formatters = {}
 
     -- add client
     for _, client in pairs(buf_clients) do
@@ -23,14 +20,7 @@ local lsp = {
       end
     end
 
-    -- add formatter
-    for _, formatter in pairs(formatters) do
-      table.insert(buf_formatters, formatter.name)
-    end
-
-    vim.list_extend(buf_client_names, buf_formatters)
-
-    local unique_client_names = table.concat(buf_client_names, ", ")
+    local unique_client_names = table.concat(buf_client_names)
     local language_servers = string.format("lsp: %s", unique_client_names)
 
     return language_servers
