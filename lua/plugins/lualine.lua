@@ -25,7 +25,7 @@ local lsp = {
 
     return language_servers
   end,
-  color = { gui = "bold" },
+  color = { fg = "#081633", gui = "bold" },
   cond = hide_in_width,
 }
 
