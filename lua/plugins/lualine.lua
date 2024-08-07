@@ -89,6 +89,7 @@ local python_env = {
     return ""
   end,
   color = { fg = "#f9e2af", gui = "bold" },
+  cond = hide_in_width,
 }
 
 local mid_sec = {
