@@ -91,6 +91,13 @@ local python_env = {
   color = { fg = "#f9e2af", gui = "bold" },
 }
 
+local mid_sec = {
+  function()
+    return "%="
+  end,
+  cond = hide_in_width,
+}
+
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
@@ -107,6 +114,7 @@ return {
         { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
         { Util.lualine.pretty_path() },
         python_env,
+        mid_sec,
         lsp,
       },
       lualine_y = {
