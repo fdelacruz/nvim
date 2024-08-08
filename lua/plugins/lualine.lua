@@ -1,4 +1,5 @@
 local Util = require("lazyvim.util")
+local icons = LazyVim.config.icons
 
 local mode_map = {
   ["n"] = "NORMAL",
@@ -59,7 +60,7 @@ local lsp = {
     end
 
     local unique_client_names = table.concat(buf_client_names)
-    local language_servers = string.format("lsp: %s", unique_client_names)
+    local language_servers = string.format("%s", unique_client_names)
 
     return language_servers
   end,
@@ -92,13 +93,6 @@ local python_env = {
   cond = hide_in_width,
 }
 
-local mid_sec = {
-  function()
-    return "%="
-  end,
-  cond = hide_in_width,
-}
-
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
@@ -111,14 +105,69 @@ return {
       lualine_a = { mode },
       lualine_c = {
         Util.lualine.root_dir(),
-        -- "diagnostics",
-        { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-        { Util.lualine.pretty_path() },
+        -- {
+        --   "diagnostics",
+        --   symbols = {
+        --     error = icons.diagnostics.Error,
+        --     warn = icons.diagnostics.Warn,
+        --     info = icons.diagnostics.Info,
+        --     hint = icons.diagnostics.Hint,
+        --   },
+        -- },
+        {
+          Util.lualine.pretty_path(),
+          cond = hide_in_width,
+        },
+        {
+          "diff",
+          symbols = {
+            added = icons.git.added,
+            modified = icons.git.modified,
+            removed = icons.git.removed,
+          },
+          cond = hide_in_width,
+        },
         python_env,
-        mid_sec,
-        lsp,
+      },
+      lualine_x = {
+        -- stylua: ignore
+        {
+          function() return require("noice").api.status.command.get() end,
+          cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
+          color = function() return LazyVim.ui.fg("Statement") end,
+        },
+        -- stylua: ignore
+        {
+          function() return require("noice").api.status.mode.get() end,
+          cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+          color = function() return LazyVim.ui.fg("Constant") end,
+        },
+        -- stylua: ignore
+        {
+          function() return "  " .. require("dap").status() end,
+          cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
+          color = function() return LazyVim.ui.fg("Debug") end,
+        },
+        -- stylua: ignore
+        {
+          require("lazy.status").updates,
+          cond = require("lazy.status").has_updates,
+          color = function() return LazyVim.ui.fg("Special") end,
+        },
       },
       lualine_y = {
+        lsp,
+        { "filetype", icon_only = false, separator = "", padding = { left = 1, right = 1 } },
+        { "encoding", padding = { left = 0, right = 0 } },
+        {
+          "fileformat",
+          symbols = {
+            unix = "[unix]", -- e712
+            dos = "[dos]", -- e70f
+            mac = "[mac]", -- e711
+          },
+          padding = { left = 0, right = 0 },
+        },
         "location",
       },
       lualine_z = {
