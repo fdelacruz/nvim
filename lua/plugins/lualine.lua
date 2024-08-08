@@ -59,7 +59,7 @@ local lsp = {
       end
     end
 
-    local unique_client_names = table.concat(buf_client_names)
+    local unique_client_names = table.concat(buf_client_names, ", ")
     local language_servers = string.format("%s", unique_client_names)
 
     return language_servers
