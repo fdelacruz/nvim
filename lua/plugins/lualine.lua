@@ -154,11 +154,11 @@ return {
           cond = require("lazy.status").has_updates,
           color = function() return LazyVim.ui.fg("Special") end,
         },
+        lsp,
+        { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 1 } },
       },
       lualine_y = {
-        lsp,
-        { "filetype", icon_only = false, separator = "", padding = { left = 1, right = 1 } },
-        { "encoding", padding = { left = 0, right = 0 } },
+        { "encoding", padding = { left = 1, right = 0 } },
         {
           "fileformat",
           symbols = {
