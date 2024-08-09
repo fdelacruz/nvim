@@ -155,7 +155,7 @@ return {
           color = function() return LazyVim.ui.fg("Special") end,
         },
         lsp,
-        { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 1 } },
+        { "filetype", icon_only = true, separator = "", padding = { left = 0, right = 1 } },
       },
       lualine_y = {
         { "encoding", padding = { left = 1, right = 0 } },
