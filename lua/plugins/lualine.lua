@@ -166,7 +166,7 @@ return {
             dos = "[dos]", -- e70f
             mac = "[mac]", -- e711
           },
-          padding = { left = 0, right = 0 },
+          padding = { left = 1, right = 0 },
         },
         "location",
       },
