@@ -5,6 +5,7 @@ return {
     formatters_by_ft = {
       ["javascript"] = { "eslint" },
       ["javascriptreact"] = { "prettier" },
+      ["python"] = { "black" },
     },
   },
 }
