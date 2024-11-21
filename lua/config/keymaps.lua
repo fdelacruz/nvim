@@ -5,7 +5,7 @@
 local keymap = vim.keymap.set
 
 keymap("n", "-", ":lua require'lir.float'.toggle()<CR>", { noremap = true, silent = true, desc = "Open lir" })
-keymap("n", ";", ":Dashboard<CR>", { noremap = true, silent = true, desc = "Open Dashboard" })
+keymap("n", ";", ":lua Snacks.dashboard()<CR>", { noremap = true, silent = true, desc = "Open Dashboard" })
 
 keymap("n", "<C-h>", ":NvimTmuxNavigateLeft<CR>", { silent = true, desc = "Navigate Left" })
 keymap("n", "<C-j>", ":NvimTmuxNavigateDown<CR>", { silent = true, desc = "Navigate Down" })
