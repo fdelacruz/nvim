@@ -1,1 +1,3 @@
-return {}
+return {
+  { "mrcjkb/rustaceanvim", enabled = false },
+}
