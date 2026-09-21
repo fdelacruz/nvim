@@ -5,7 +5,6 @@ return {
     ensure_installed = {
       "ruff",
       "pyright",
-      "black",
 
       "emmet-ls",
       "html-lsp",

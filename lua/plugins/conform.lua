@@ -5,7 +5,7 @@ return {
     formatters_by_ft = {
       ["javascript"] = { "eslint" },
       ["javascriptreact"] = { "prettier" },
-      ["python"] = { "black" },
+      ["python"] = { "ruff_organize_imports", "ruff_format" },
     },
   },
 }
