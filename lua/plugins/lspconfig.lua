@@ -31,11 +31,16 @@ return {
         pyright = {
           settings = {
             pyright = {
-              disableOrganizeImports = true, -- Using Ruff
+              disableOrganizeImports = true, -- Ruff handles import sorting
             },
             python = {
               analysis = {
-                ignore = { "*" }, -- Using Ruff
+                typeCheckingMode = "basic",
+                diagnosticSeverityOverrides = {
+                  reportUndefinedVariable = "none", -- Ruff (F821) covers this
+                  reportUnusedImport = "none", -- Ruff (F401)
+                  reportUnusedVariable = "none", -- Ruff (F841)
+                },
               },
             },
           },
