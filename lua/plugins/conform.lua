@@ -6,6 +6,8 @@ return {
       ["javascript"] = { "eslint" },
       ["javascriptreact"] = { "prettier" },
       ["python"] = { "ruff_organize_imports", "ruff_format" },
+      ["html"] = { "prettier" },
+      ["htmldjango"] = { "djlint" },
     },
   },
 }
