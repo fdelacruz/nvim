@@ -13,3 +13,10 @@ keymap("n", "<C-k>", ":NvimTmuxNavigateUp<CR>", { silent = true, desc = "Navigat
 keymap("n", "<C-l>", ":NvimTmuxNavigateRight<CR>", { silent = true, desc = "Navigate Right" })
 keymap("n", "<C-\\>", ":NvimTmuxNavigateLastActive<CR>", { silent = true, desc = "Navigate Last Active" })
 keymap("n", "<C-Space>", ":NvimTmuxNavigateNext<CR>", { silent = true, desc = "Navigate Next" })
+
+keymap("n", "P", function()
+  local winid = require("ufo").peekFoldedLinesUnderCursor()
+  if not winid then
+    vim.lsp.buf.hover()
+  end
+end)
