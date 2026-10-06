@@ -14,6 +14,7 @@ return {
       "eslint-lsp",
       "prettier",
       "jinja-lsp",
+      "djlint",
 
       "lua-language-server",
       "stylua",
