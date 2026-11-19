@@ -1,7 +1,7 @@
 return {
   "saghen/blink.cmp",
   opts = function(_, opts)
-    opts.completion = {
+    opts.completion = vim.tbl_deep_extend("force", opts.completion or {}, {
       menu = {
         border = "single",
       },
@@ -11,6 +11,6 @@ return {
           border = "single",
         },
       },
-    }
+    })
   end,
 }

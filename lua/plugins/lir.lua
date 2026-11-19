@@ -61,12 +61,11 @@ return {
         hide_cursor = false,
         on_init = function()
           -- use visual mode
-          vim.api.nvim_buf_set_keymap(
-            0,
+          vim.keymap.set(
             "x",
             "J",
             ':<C-u>lua require"lir.mark.actions".toggle_mark("v")<CR>',
-            { noremap = true, silent = true }
+            { buffer = 0, noremap = true, silent = true }
           )
         end,
       })
@@ -75,12 +74,11 @@ return {
         pattern = { "lir" },
         callback = function()
           -- use visual mode
-          vim.api.nvim_buf_set_keymap(
-            0,
+          vim.keymap.set(
             "x",
             "J",
             ':<C-u>lua require"lir.mark.actions".toggle_mark("v")<CR>',
-            { noremap = true, silent = true }
+            { buffer = 0, noremap = true, silent = true }
           )
 
           -- echo cwd
