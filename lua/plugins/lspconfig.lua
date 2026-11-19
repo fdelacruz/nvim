@@ -2,7 +2,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      inlay_hints = { enabled = false },
       servers = {
         lua_ls = {
           settings = {
@@ -11,7 +10,7 @@ return {
             },
           },
         },
-        tsserver = {
+        ts_ls = {
           single_file_support = false,
           settings = {
             javascript = {
