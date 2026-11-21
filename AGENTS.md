@@ -59,6 +59,30 @@ This document covers the changes made to `lua/plugins/lualine.lua`, why they wer
 - Load-tested before committing.
 - Committed as `ffd9384` ("refactor(lualine): optimize statusline performance and startup").
 
+## Planned: merge pristine LazyVim lualine with custom components
+
+### Goal
+Combine the pristine LazyVim lualine with custom components (mode, lsp, python_env, etc.) to eliminate duplicate diff/branch components leaking from LazyVim defaults.
+
+### Changes
+- Move `"diff"` from `lualine_c` → `lualine_x` (original spot), with gitsigns `source`
+- Re-add `"diagnostics"` to `lualine_c` (was commented out)
+- Add `lualine_b = { "branch" }` to prevent stray diff/branch leaking from defaults
+- Keep `lualine_z = { "progress" }`
+- Preserve custom components: `mode`, `lsp`, `python_env`, `hide_in_width`, noice/dap/sidekick/lazy guards, empty separators
+- Add `Snacks.profiler.status()` to `lualine_x`
+- Add trouble conditional at end of opts (appended to `lualine_c` if enabled)
+
+### Resulting structure
+```
+lualine_a = { mode }
+lualine_b = { "branch" }
+lualine_c = { root_dir, diagnostics, pretty_path (cond), python_env (cond) }
+lualine_x = { profiler, noice cmd, noice mode, dap, sidekick, lazy updates, lsp (cond), filetype, diff }
+lualine_y = { encoding, fileformat, location }
+lualine_z = { "progress" }
+```
+
 # nvim config — optimization notes
 
 This document summarizes the edits made to the Neovim configuration under `lua/plugins/` and `lua/config/`, why they were made, how they were applied, and the precautions taken.
